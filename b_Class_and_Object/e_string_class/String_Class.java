@@ -1,4 +1,4 @@
-package b_Class_and_Object;
+package b_Class_and_Object.e_string_class;
 
 public class String_Class {
     public static void main(String[] args) {
