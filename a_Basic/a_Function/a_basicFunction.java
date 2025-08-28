@@ -1,4 +1,4 @@
-package a_Function;
+package a_Basic.a_Function;
 public class a_basicFunction {
 
     public static void main(String[] args) {
