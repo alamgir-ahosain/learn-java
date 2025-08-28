@@ -27,6 +27,16 @@ Why Use Encapsulation?
 
 
 3 ways to implement Encapsulation :
-    1. Public ,Private and protected
-    2. Getter and Setter
-    3. import Package
+    1. import Package
+    2. Access Modifiers(Public ,Private and protected)
+    3. Getter and Setter
+   
+
+
+    
+    | Constructor Visibility | Accessible from same package  | Accessible from other packages      |
+    | ---------------------  | ----------------------------  | ------------------------------------|
+    | public                 |  Yes                          |  Yes                                |
+    | default (no keyword)   |  Yes                          |  No                                 |
+    | private                |  No (except within the class) |  No                                 |
+    | protected              |  Yes                          |  Only subclasses in other packages  |
