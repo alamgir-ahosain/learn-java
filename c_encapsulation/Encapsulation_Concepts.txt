@@ -1,0 +1,32 @@
+wrapping the data (variables) and methods (functions)
+into a single unit, typically a class, 
+and restricting direct access to some of the object's components.
+
+
+
+Key Features of Encapsulation:
+    1. Data Hiding – Prevents direct access to class variables from outside the class.
+    2. Access Modifiers – Use of private to hide data.
+    3. Getter and Setter Methods – Use public methods to read (get) and modify (set) private data.
+
+
+Why Use Encapsulation?
+    1. Protects data from unauthorized access.
+    2. Makes the class easier to maintain and modify.
+    3. Increases flexibility and reusability.
+    4. Enables validation logic in setters.
+
+    
+    Concept               How it's done
+1. Data Hiding          Declare variables private -> hides internal data, allowing access only through methods.
+2. Access Control	    Provide public getters/setters-> Uses private, public, protected to control access to class members.
+3. Validation	        Add checks in set methods
+4. Maintainability  	Easy to change internals without affecting other code
+5. Enhances Modularity  with use of import package -> Keeps classes separate and reduces coupling.
+6. Maintain Integrity   Protect object state from external interference
+
+
+3 ways to implement Encapsulation :
+    1. Public ,Private and protected
+    2. Getter and Setter
+    3. import Package
