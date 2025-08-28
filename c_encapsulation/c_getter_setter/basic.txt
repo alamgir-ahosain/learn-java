@@ -1,0 +1,7 @@
+
+Getters and Setters in Java – Key Points:
+    1. Getters:Retrieve private field values, typically named get<FieldName>().
+    2. Setters:Set or update private field values, usually named set<FieldName>().
+    3. Control and Validation:Offer controlled access and allow for validation logic.
+    4. Encapsulation:Facilitate read-only or write-only access to class fields.
+    5. Flexibility:Allow for internal changes without affecting external interfaces.
