@@ -1,0 +1,18 @@
+
+4 types of access Modifiers:
+    1.public
+    2.default(no Modifiers) or package private
+    3.private
+    4.protected
+    
+    | Constructor Visibility | Accessible from same package  | Accessible from other packages      |
+    | ---------------------  | ----------------------------  | ------------------------------------|
+    | public                 |  Yes                          |  Yes                                |
+    | default (no keyword)   |  Yes                          |  No                                 |
+    | private                |  No (except within the class) |  No                                 |
+    | protected              |  Yes                          |  Only subclasses in other packages  |
+
+
+
+Class-Level Access : Only public and default(no Modifies) access Modifiers are applicable for top-level class.
+Member-Level Access : Method,Constructor and Variables can use all four access Modifiers to control Visibility.
