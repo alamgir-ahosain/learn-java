@@ -1,0 +1,15 @@
+A package is a namespace that 
+  organized classes and interfaces ,preventing naming conflicts.
+
+import Statement: used to bring in class and interfaces from other packages
+  into current file making them accessible without using a fully qualified name.
+
+Type of package:
+  1. Built in package :java.lang(automatically imported ),java.io,java.util ...
+  2. used defined package  : defined the used 
+
+Types of import:
+  1. single type : import single class or interfaces(import java.util.List)
+  2. On-demand   : import all classes and interfaces from a package(import java.util.*)
+
+
