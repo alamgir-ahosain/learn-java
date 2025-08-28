@@ -1,7 +1,7 @@
 
 
-package c_encapsulation.a_package.pkg1;
-import c_encapsulation.a_package.pkg2.Two;
+package c_Encapsulation.a_package.pkg1;
+import c_Encapsulation.a_package.pkg2.Two;
 
 public class One {
     public static void main(String[] args) {

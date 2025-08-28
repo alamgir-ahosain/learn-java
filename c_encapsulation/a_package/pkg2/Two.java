@@ -1,4 +1,4 @@
-package c_encapsulation.a_package.pkg2;
+package c_Encapsulation.a_package.pkg2;
 
 public class Two {
     public Two(String s) {
