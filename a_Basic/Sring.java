@@ -8,9 +8,18 @@ public class Sring {
         System.out.printf("Name: %15s ,Age:%d\n", name, age); // right-aligned,width:15
         System.out.printf("Name: %-15s ,Age:%d\n", name, age); // left-aligned,width:15
         System.out.printf("Name: %15S ,Age:%d\n", name, age); // uppercase ,left-aligned,width:15
+
+
+        //________________________String Builder___________
+        /*
+         mutable ,store in heap
+         */
+        StringBuilder str=new StringBuilder("Alamgir");
+        str.append("Hosain");
+        System.out.println(str.toString());
         
 
-        
+
 
     }
 }
