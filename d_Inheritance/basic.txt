@@ -1,0 +1,52 @@
+
+
+Inheritance allows a new class (subclass) to inherit feature from an existing class(Superclass).
+Why Use Inheritance?
+code reusability : it enables subclass to use methods and variables of the Superclass, reducing code duplication.
+access control: the protected access modfier is often used in Inheritance to allow subclass access to superclass members.
+
+Types of Inheritance in Java
+    1. single Inheritance
+    2. Multilevel Inheritance
+    3. Multiple Inheritance(In Java ,not allowed)
+    4. Hirarchical Inheritance
+
+The Basics of Inheritance in Java
+
+1. extends 
+     connects the child (subclass) to the parent (superclass) and enables inheritance.
+2. Parent Class / Base Class / Superclass
+    the class from which another class inherits.
+3. Child Class / Derived Class / Subclass
+    the class that inherits from another class.
+
+        class Superclass { }   // parent/base class
+        class Subclass extends Superclass { }   // child/derived class
+
+
+4. use super Keyword
+    super refers to the immediate parent class object. Uses:
+    Access parent class methods
+    Access parent class variables
+    Call parent class constructor
+
+5. Method Overriding
+Child class provides a new implementation of a method already defined in parent class.
+Rules:
+    Same method name, return type, and parameters.
+    Child’s access modifier must not be more restrictive.
+    Can’t override final, static, or private methods.
+
+6. Final Keyword
+    final variable → constant (value can’t change).
+    final method → can’t be overridden.
+    final class → can’t be inherited.
+
+
+________________
+Inheritance types: Single, Multilevel, Hierarchical, Hybrid (via interfaces).
+super: access parent constructor, methods, and variables.
+override: redefine parent’s method in child.
+final: restrict inheritance, overriding, or modification.
+Private members do NOT get inherited.
+Constructors cannot be Inherited in Java.
