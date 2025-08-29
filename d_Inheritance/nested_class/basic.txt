@@ -1,0 +1,39 @@
+1.Nested Class
+    A nested class is simply a class defined within another class.
+
+2 types of Nested class :
+    1. Static Nested class
+    2. Inner class
+        i.  Non static inner class
+        ii. anonymous inner class
+        iii.local inner class
+    first create an instance of the outer class to create an instance of the inner class.
+    Because of this association, an inner class  
+
+
+
+
+
+1. Static Nested Class:
+   i. A static nested class acts like a static member of the outer class.
+   ii. It can access the static members of the outer class.
+   iii. It can't access the non-static members of the outer class.
+
+2.i . Non Static Inner Class
+   i.  associated with an instance of the outer class. 
+   ii. Can access to all members of the outer class, including private ones.
+   
+2.ii anonymous inner class
+  i. nameless inner class.
+  ii. used for single use implementation.
+  iii. often to override a method of an interface or class.
+
+2.iii .Local inner class
+    i. defined within a block of a code(like a method).
+    ii. It is only visible and accessible within that block.
+
+
+
+  1.  class Usually represent as public or default.
+  2.  but in the nested class class can be represnt as 
+    private ,public ,default or protected.
