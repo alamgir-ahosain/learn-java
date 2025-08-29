@@ -6,10 +6,10 @@ code reusability : it enables subclass to use methods and variables of the Super
 access control: the protected access modfier is often used in Inheritance to allow subclass access to superclass members.
 
 Types of Inheritance in Java
-    1. single Inheritance
-    2. Multilevel Inheritance
-    3. Multiple Inheritance(In Java ,not allowed)
-    4. Hirarchical Inheritance
+        1. Single Inheritance – One class inherits from one parent class.
+        2. Multilevel Inheritance – A chain of classes where a class inherits from a subclass.
+        3. Multiple Inheritance – Not allowed with classes in Java; achievable using interfaces.
+        4. Hierarchical Inheritance – Multiple classes inherit from a single parent class.
 
 The Basics of Inheritance in Java
 
@@ -43,10 +43,10 @@ Rules:
     final class → can’t be inherited.
 
 
-________________
-Inheritance types: Single, Multilevel, Hierarchical, Hybrid (via interfaces).
-super: access parent constructor, methods, and variables.
-override: redefine parent’s method in child.
-final: restrict inheritance, overriding, or modification.
-Private members do NOT get inherited.
-Constructors cannot be Inherited in Java.
+Key Points
+    1. Inheritance types: Single, Multilevel, Hierarchical, Hybrid (via interfaces).
+    2. super: access parent constructor, methods, and variables.
+    3. verride: redefine parent’s method in child.
+    4. final: restrict inheritance, overriding, or modification.
+    5. Private members do NOT get inherited.
+    6. Constructors cannot be Inherited in Java.
