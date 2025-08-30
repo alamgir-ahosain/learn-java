@@ -1,0 +1,70 @@
+Polymorphism:
+    Polymorphism is the abily of objects of different classes
+    to respond to the same message (method call) in different ways.
+
+Types of Polymorphism
+There are two types of polymorphism in Java:
+
+    1. Compile-Time Polymorphism(static)
+        1.Method overloading
+        2. operator overloading
+    2. Run-Time Polymorphism(Dynamic)
+        1. Method overriding
+
+Compile-Time Polymorphism
+    Achive through method overloading or operator overloading.
+    Decision is made at compile time (which method to call is fixed before running the program).
+
+Run-Time Polymorphism
+    Achived through method overriding,where a subclass provied a specific implementation of a method already defined in it's superclass.The decision of which method to call is made at runtime based on the actual object type, not the reference type.
+
+
+
+Parent
+  ^
+  |
+ extends
+  |
+ Child  
+
+Upcasting:
+    1. Convert subclass to superclass reference
+    2. automatic and safe
+    3. access only to superclass method.
+    4.For generalization in methods.
+    example:Parent p=new Child() 
+Downcasting
+    1. Converts superclass to subclass.
+    2. Manual and risky,need instanceof check.
+    3. Access to subclass specific method.
+    4. For specific subclass behaviors.
+    example: 
+    Trying to Downcasting : Child c=new Parent() ,Compile time error
+    Allows cause p refers Child : Parent p=new Child();Child c=(Child)p;
+   
+
+
+
+Method /Constructor overloading
+    1. Occurs when multiple methods in the same class have the same name but different parameter list.
+    2. Overloads methods must differ in the number,type or sequence of their parameter.
+    3.Return type can vary between Overloaded methods,but the Return type alone does not distinguish them.
+
+operator overloading  
+* "+" operator can be used to add two object.
+         This is the only available support operator overloading in java,Though cann't
+         make custom defiend operator overloading.    
+
+Method overriding    
+    1.  **Method overriding** occurs when a subclass provides a specific implementation for a method already defined in its superclass.
+    2.  **Run-Time Polymorphism:** Overriding is a basis for runtime polymorphism, where the method call is determined by the object's type at runtime.
+    3.  **Superclass Reference:** An overridden method can be called through a superclass reference holding a subclass object.
+
+    1. Same Signature :Overridden methods must have 
+        same name,
+        same Return type,
+        parameter as the method in Parent class
+
+    2. Access Level: Cannot be more restrictive then Overridden methods access level.
+    3.@Overridden annotation:This annotation is optional but helps to ensure the method is correctly Overridden.
+
