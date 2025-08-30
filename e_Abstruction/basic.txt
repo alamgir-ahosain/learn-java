@@ -1,0 +1,64 @@
+
+Abstraction is the process of hiding the implementation details and showing only the essential features of an object.
+
+Why use Abstraction?
+Core principle:
+    Abstraction hide complex implementation  details.focusing only on essintial feature.
+Focus on Functionality:
+    Emphasizes what an object does,not how to does not ,through clear Interfaces.
+Simplifies complexity:
+    it reduces complexity by showing only relevant information in class design.
+Real-Word Modeling: 
+    Abstraction alloes creating objects that represent real-life entities with key attributes and behaviours.    
+
+
+How achieve abstraction in Java?
+    1.Abstruct class
+    2. Interfaces
+
+
+abstract class ClassName {
+    // Abstract method (doesn't have a body)
+    abstract void methodName();
+
+    // Concrete method (has a body)
+    void concreteMethod() {
+        // Method body
+    }
+}
+
+1. abstruct keyword 
+        1.1 Abstruct class
+        1.2 Abstruct Method.
+    1.1 Abstruct class
+        i. Used to declare non-instatiable abstract .
+        ii. Serve as base class or superclass.
+        iii. Can have both abstract methods and non-abstract methods .
+
+    1.2 Abstruct Method 
+        i. Defines method without implementation,requiring subclassess to provide specific Functionality.
+        ii. Subclass must implement all abstract method of an abstract class.
+        iii. Allows for flexible class design by defining a constract for subclassess.
+
+defining an Interfaces
+implementing an interface
+2. Interfaces
+    i. An interface is like a contract — it declares methods that must be implemented by the classes that use it.
+    ii. A class can implement multiple Interfaces.
+    iii. All interface methods are by default public and abstract (unless they are default or static).
+    iv. Interfaces can have
+        abstract methods (no body → must be implemented)
+        default methods (have a body → optional to override)
+        static methods (can be called using interface name)
+
+
+
+
+Is java allow multiple inheritance?
+    In generally multiple class cannot be inherited in java.but multiple Interfaces can be.
+
+
+Key Points:
+    i. abstruct  keyword is a non-access modifier(access modifier are public,private ,protected ,default) 
+    ii. implement
+    iii. override      
