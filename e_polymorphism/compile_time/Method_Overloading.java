@@ -2,8 +2,8 @@ package e_polymorphism.compile_time;
 
 class Car{
     Car(){ System.out.println("Constructor");} 
-    Car(String name){  System.out.println("Constructor"); } 
-    Car(String name,int id){  System.out.println("Constructor"); }
+    Car(String name){  System.out.println(name); } 
+    Car(String name,int id){  System.out.println(name+id); }
 }
 public class Method_Overloading {
 
