@@ -35,6 +35,6 @@ public class Method_Overriding {
         checkRunTime(c2);
 
         Parent p = new Child1();
-        p.show(); // JVM(Java Virtual Machine) calls Child1.show() at runtime
+        p.show(); //JVM(Java Virtual Machine) calls Child1.show() at runtime
     }
 }
