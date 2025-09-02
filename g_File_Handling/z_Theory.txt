@@ -1,0 +1,24 @@
+               ________ FileWriter Class_____ 
+                
+    1. FileWriter is used for writing streams of characters to files.
+    2. It's a character-based stream, which means it's best used for writing text rather than binary data.
+    3. Constructors:
+       1. FileWriter(String fileName): Creates a FileWriter object given the name of the file to write to.
+       2. FileWriter(File file): Creates a FileWriter object given a File object.
+   4.Common Methods:
+       1. write(int c): Writes a single character.
+       2. write(char[] cbuf): Writes an array of characters.
+       3. write(String str): Writes a string.
+       4. flush(): Flushes the stream, ensuring all data is written out.
+       5. close(): Closes the stream, releasing any associated system resources.
+
+                ___________FileReader Class_________
+
+    1. The FileReader class is used for reading streams of characters from files.
+    2. It's a character-based stream, meaning it reads characters (as opposed to bytes). This makes it suitable for reading text files.
+    3. Constructors:
+        1. FileReader(String fileName): Creates a FileReader object to read from a file with the specified name.
+        2. FileReader(File file): Creates a FileReader object to read from the specified File object.
+    4. Common Methods:
+        1. read(): Reads a single character and returns it as an integer. Returns -1 if the end of the stream is reached.
+        2. read(char[] cbuf): Reads characters into a buffer and returns the number of characters read.
