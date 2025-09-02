@@ -1,0 +1,43 @@
+               ________ FileWriter Class_____ 
+
+    1. FileWriter is used for writing streams of characters to files.
+    2. It's a character-based stream, which means it's best used for writing text rather than binary data.
+    3. Constructors:
+       1. FileWriter(String fileName): Creates a FileWriter object given the name of the file to write to.
+       2. FileWriter(File file): Creates a FileWriter object given a File object.
+   4.Common Methods:
+       1. write(int c): Writes a single character.
+       2. write(char[] cbuf): Writes an array of characters.
+       3. write(String str): Writes a string.
+       4. flush(): Flushes the stream, ensuring all data is written out.
+       5. close(): Closes the stream, releasing any associated system resources.
+
+                ___________FileReader Class_________
+
+    1. The FileReader class is used for reading streams of characters from files.
+    2. It's a character-based stream, meaning it reads characters (as opposed to bytes). This makes it suitable for reading text files.
+    3. Constructors:
+        1. FileReader(String fileName): Creates a FileReader object to read from a file with the specified name.
+        2. FileReader(File file): Creates a FileReader object to read from the specified File object.
+    4. Common Methods:
+        1. read(): Reads a single character and returns it as an integer. Returns -1 if the end of the stream is reached.
+        2. read(char[] cbuf): Reads characters into a buffer and returns the number of characters read.
+
+                 _______________BufferedReader / BufferedWriter _____________
+   1. Efficient Reading/Writing
+   2. Wraps FileReader/FileWriter for faster performance.
+   3. Reads/writes line by line instead of character by character.        
+   4. method
+        1. readLine() : Reads a full line (BufferedReader only) .Returns a String containing the line, or null if end of file.
+        2.newLine() :Writes a platform-specific newline.
+
+                    
+                 _______________FileInputStream / FileOutputStream  _______________
+   1. Binary Data (Images, Audio, etc.)
+   2. Used for raw binary data like images, PDFs, audio, etc.
+   3. Reads/writes bytes instead of characters.
+   4. method
+        1. read(byte[] b) :Reads bytes into a byte array, returns number of bytes read.
+        2. available() :Returns the number of bytes available to read without blocking.
+        3. write(byte[] b)	Writes bytes from an array.
+        4. write(byte[] b, int off, int len)	Writes len bytes from array starting at offset off.
