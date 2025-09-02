@@ -1,0 +1,147 @@
+
+
+___________________ Generics __________
+   1. Generics allow  to write classes, interfaces, and methods that can operate on any type of objects while providing compile-time type safety.
+   Example: Map,Set ,Queue...
+   2. Purpose: Avoid typecasting and runtime errors by specifying the type of objects a collection or method can work with.
+
+   1. Provides type safety at compile-time.
+   2. Eliminates the need for explicit casting.
+   3. Works with classes, interfaces, and methods.
+   4. Type information is erased at runtime (type erasure).
+
+
+
+           _________ Java Variable Argument_________
+    1. Allow method to accept any number of Arguments.
+    2. Declared using an ellipsis(...) 
+        example: void add(int ...nums)
+    3.Treated as array . 
+        example: int ... nums is int [] nums  
+    4.Placement: Must be last in the methods parameter.      
+
+
+           _________ Wrapper class_________
+
+object
+    1.Boolean
+    2.Character
+    3.number:Byte ,Short,Integer,Long,Float,Double           
+
+    1. Purpose: Let primitive types (int, char, boolean, etc.) be used as objects.
+    2. Autoboxing/Unboxing: Automatically converts between primitives and their wrapper objects.
+        1. Autoboxing:Automatix conversion of primitibe types to their corresponding wrapper class objects.  
+        2. Unboxing:Automatix conversion of wrapper class object back to their respective prmitive type.
+    3. Immutability: Once created, wrapper objects cannot be changed.
+    4. Utility Methods: Provide helpful methods like valueOf() and parseXxx() (e.g., parseInt).
+    5. Collections: Needed to store primitives in collections like ArrayList or HashMap.
+    5. Null Values: Can assign null to wrapper objects, unlike primitives.
+
+
+
+_______________________________ Collections Class____________________________
+
+   1. Part of java.util package.
+   2. Provides utility methods for collection objects (like List, Set, Queue).
+   3. All methods are static, so you don’t need to create an object.
+
+    List<Integer> numbers = new ArrayList<>(Arrays.asList(5, 2, 8, 1));
+        Collections.sort(numbers); // Sort list: [1, 2, 5, 8]
+        Collections.reverse(numbers); // Reverse list: [8, 5, 2, 1]
+        Collections.shuffle(numbers); // Shuffle randomly
+        int max = Collections.max(numbers); // Get maximum value
+        int min = Collections.min(numbers); // Get minimum value
+
+
+                        __________Collection Library______________
+
+    Collection Interface: This is the root interface of the entire collection hierarchy.
+ 1. List Interface
+    1. An ordered collection  also known as a sequence.
+    2. Allow duplicate elements.
+    3.Elements can be accessed by their integer index.
+    4. Maintains the insertion order of elements.
+    5. Performance: Offer fast random access and quick iteration.
+    6.Capacity: Grows automatically as new elements are added.
+    7. preferred over traditional arrays when the size of the collection is dynamic or unknown.
+    example:
+        List<Integer> list = new ArrayList<>();
+        list.add(10);       // Add element at end
+        list.add(0, 5);     // Add element at specific index
+        list.get(0);        // Get element at index
+        list.set(0, 15);    // Update element at index
+        list.remove(0);     // Remove element at index
+        list.size();        // Get number of elements
+        list.isEmpty();     // Check if list is empty
+        list.contains(10);  // Check if element exists
+
+  
+
+
+
+
+2. Queue Interface
+        1. A collection used for holding elements in a FIFO order prior to processing. PriorityQue,LinkedList
+        2. End Points: Offers two ends - one for insertion(tail) an other for removal(head)
+
+       Example:
+        Queue<Integer> q = new LinkedList<>();
+            q.add(1); // Insert element, throws exception if fails
+            q.offer(2); // Insert element, returns false if fails
+            int h = q.peek(); // View head, returns null if empty
+            int th = q.poll(); // Remove and return head, null if empty
+            int t = q.element(); // View head, exception if empty
+            int r = q.remove(); // Remove and return head, exception if empty
+
+
+
+    3. Set Interface
+        1. Does not contain duplicate elements.
+        2. Set does not guarantee any specific ordering.
+        3. Does not support indexing based access to  elements.
+        4. HashSet,SortedSet,LinkedListSet
+        Example:
+        Set<Integer> s = new HashSet<>();
+            s.add(10); // Add element
+            s.add(10); // Duplicate ignored
+            s.contains(10); // Check if element exists
+            s.remove(20); // Remove element
+            s.size(); // Get number of elements
+            s.isEmpty(); // Check if set is empty
+
+    
+    4. Map Interface
+        1. While not a true `Collections class` interface, it is a core part of the Collections Framework.
+        2. It's used to store key-value pairs.
+        3. Keys must be unique, but different keys can map to the same value.
+          HashTable,HashMap,SortedMap
+
+        Map<Integer, String> map = new HashMap<>();
+                map.put(1, "One"); // Insert key-value pair
+                map.put(2, "Two"); // Insert another pair
+                map.putIfAbsent(2, "New");// Insert only if key not present
+                map.get(1); // Get value by key
+                map.getOrDefault(3, "NA");// Get value or default if key missing
+                map.containsKey(2); // Check if key exists
+                map.containsValue("Two"); // Check if value exists
+                map.remove(1); // Remove entry by key
+                map.replace(2, "Second"); // Replace value for a key
+                map.size(); // Get number of entries
+                map.isEmpty(); // Check if map is empty
+                map.keySet(); // Get all keys
+                map.values(); // Get all values
+                map.entrySet(); // Get all key-value pairs
+
+
+
+_________________________________ Enum(enumeration) ___________________
+    1. Special types for fixes sets of constants like days ,colors.
+    2. Declartion: Use enum keyword , enum color{RED,GREEN;}
+    3. Access: Access constants with dot syntax . color.RED
+    4. Feature: Type-safe,readable,can have methods and fields.
+    5. Useful in switch statement and iterating with values() method.
+    6. Key Points
+        1. Enums can have constructors, fields, and methods.
+        2. values() → returns all constants.
+        3. ordinal() → gives position of constant (0-based).
+        4. valueOf("NAME") → returns enum constant by name.
