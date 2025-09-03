@@ -1,0 +1,249 @@
+                   
+                                    __________Multithreading in Java_________
+
+                                Introduction
+
+Multithreading in Java enables concurrent execution of multiple parts of a program, making applications faster, more responsive, and efficient on multi-core processors
+
+In this article, we will cover:
+    1. Basics of CPU, Core, Program, Process, and Thread .
+    2. Concurrency vs. Parallelism
+    3. Multitasking
+    4. Multithreading
+    5. Creating Thread
+    6. Thread Lifecycle
+    7. Thread Communication
+    8. Common Thread Methods
+    9. Synchronization (Handling Race Conditions & Deadlocks)
+    10. When to use Multithreading
+    11. When not to use Multithreading
+    12. Key Points
+
+                                    Basic   
+
+    CPU: The brain of the computer, is responsible executing instructions from programs.
+    core: An individual processing unit within a CPU
+    Program: A set of instructions perform a specific task.
+    process: An instance of a program that is being executed.When a program runs, the operating system creates a process to manage its execution.
+    Thread:The smallest unit of execution within a process. 
+    A process can have multiple threads, which share the same resources (as heap,code section)but can run independently.
+
+                      Concurrency vs Parallelism
+
+Two crucial concepts in multithreading are 
+    1. concurrency and 
+    2. parallelism.
+
+What is Concurrency?
+    Concurrency refers to the ability of a system to handle multiple tasks at the same time(necessarily simultaneously). 
+    Achieved by using multiple threads, where each thread can perform part of a task.(context-switching).
+
+    Challenge: Writing concurrent code can lead to race conditions, deadlocks, and synchronization issue
+What is Parallelism?
+    Parallelism refers to the simultaneous execution of tasks on multiple cores. 
+    Challenge: Hard to split tasks and manage them correctly
+
+                    Multitasking
+Multitasking
+   Allows an operating system to run multiple processes simultaneously.
+   1.  on a single core CPU: done through time-sharing(rapidly switching between tasks);
+   2. On multi-core CPUs: true parallel execution occurs(tasks distributed across cores). 
+   3. Multitasking can be achieved through multithreading.
+
+
+                            Multithreading    
+
+What is a Multithreading?
+   Multithreading refers to executing multiple threads concurrently within a single process.
+    1. On a single-core CPU: JVM and OS manage thread switching (illusion of concurrency).
+    2. On a multi-core CPU: Both Threads and Process can run in true parallel.
+    3. The JVM can distribute threads across multiple cores, allowing true parallel execution of threads.
+    
+                            Creating Thread
+
+Java supports multithreading through its java.lang.Thread class and the java.lang.Runnable interface.
+
+    1. Extending Thread class
+        step-1: Define a Class that Extends Thread Class.
+        step-2:Override the run() method.
+        step-3:Create an Instance of Class.
+
+
+    2. Implementing Runnable interface
+        step-1: Define a class that Implementing Runnable class.
+        step-2:Override the run() method.
+        step-3:Create an Instance of Class.
+        step-4: Wrap the class with thread
+
+
+        // Creating a thread by extending Thread class
+        class MyThread extends Thread {
+            public void run() {
+                // Thread logic here
+            }
+        }
+
+        // Creating a thread by implementing Runnable interface
+        class MyRunnable implements Runnable {
+            public void run() {
+                // Thread logic here
+            }
+        }
+
+        // Main application
+        public class ThreadCreationExample {
+            public static void main(String[] args) {
+                MyThread thread1 = new MyThread();
+                Thread thread2 = new Thread(new MyRunnable());
+
+                thread1.start(); // Start the thread
+                thread2.start(); // Start the thread
+            }
+        }
+
+
+                                Thread Lifecycle
+    A thread goes through the following states:
+    1. New -> Thread object created but not started.
+    2. Runnable -> Ready to run, waiting for CPU.
+    3. Running -> Thread scheduler picks it.
+    4. Waiting/Blocked -> Temporarily inactive. waiting for resources or for another thread to perform a task.
+    5. Terminated -> Execution finished or stopped running.
+
+
+                            Thread Communication
+    1. sleep(ms) : Pauses execution.
+    2. yield() : Suggests scheduler to pause current thread.
+    3. wait() :wait until notified.
+    5. notify()/notifyAll(): Wakes up waiting thread.
+    6. Thread Pools: Manage reusable threads efficiently.
+
+
+                        Common Thread Methods
+    1. start() -> starts a new thread.JVM calls the run() method.
+    
+    2. run() ->  Defines task (called internally).
+    3. sleep(ms) -> pauses thread for given time.
+       Thread.sleep(1000); // Current thread sleeps for 1 second
+
+    11. yield()->the current thread temporarily pause its execution .
+        Thread.yield(); // Current thread tells scheduler it can pause
+
+    4. wait() -> Causes the current thread to wait until another thread calls notify()/notifyAll() on the same object.
+        synchronized(obj) { obj.wait(); } // Thread waits on obj
+
+    5. notify() -> Wakes up one thread waiting on the object’s monitor.
+        synchronized(obj) { obj.notify(); } // Wake up one waiting thread
+
+    6 .notifyAll() -> Wakes up all threads waiting on the object’s monitor.
+        synchronized(obj) { obj.notifyAll(); } // Wake up all waiting threads
+    
+    7. join -> waits until a thread finishes.
+        i. join() : 
+             t1.join();   // main waits until t1 is completely done
+        ii. join(long mullis) :
+             t1.join(2000);  // wait max 2 seconds for t1
+        iii. join(long millis,int nanos) : 
+             t1.join(1000, 500000); // wait 1000 ms + 0.5 ms (500000 ns)
+    
+    8. isAlive() -> checks if thread is running.
+    9. setPriority(int p) -> 
+        1.  sets priority (1 min – 10 max).
+        2. The priority is a value between Thread.MIN_PRIORITY (1) and Thread.MAX_PRIORITY (10). 
+        3. Default value is 5.
+        4. Priority is a hint to the scheduler  not guaranteed
+    10. interrupt() ->
+        1. Interrupts a thread;
+        2. if blocked (e.g., sleep(), wait(), join()), it throws InterruptedException.
+    12.setDeaemon(boolean) ->
+       1. Marks thread as user thread or deamon thread.
+       2. Runs on the background .
+       3. When JVM exist ,all deamon thread are Terminated.
+
+
+
+                        Thread Synchronization
+Threads share memory, which can cause issues:
+    Deadlock:
+         when two or more threads are waiting indefinitely for each other’s resources.
+
+           Thread 1: locks A → waits for B  
+            Thread 2: locks B → waits for A  
+            // Deadlock. Forever.
+         Cause: Circular locking
+         Fix: Lock Ordering ,timeouts   
+        
+    Race Conditions:
+        When multiple threads access shared resources → data inconsistency may occur.
+        Cause: Unsynchronized access
+        Fix: Lock or Atomic variables
+
+                                Solutions
+1. synchronized method
+    public synchronized void synchronizedMethod() {
+        // Code to be executed in a mutually exclusive manner
+    }
+
+    1. Mutual Exclusion : synchronized ensures only one thread runs a block at a time, preventing race conditions.
+    2. Object Lock : A thread acquires an object/class lock when entering a synchronized block or method.
+ 
+ 2. synchronized Blocks
+
+    public void someMethod() {
+        // Non-critical section code
+
+        synchronized (lockObject) {
+            // Critical section code
+        }
+
+        // Non-critical section code
+    }
+
+3. Reentrant Locks
+4. Vloatile keyword
+5. Atomic Class
+    Classes in the java.util.concurrent.atomic package provides atomic operations, eliminating the need for explicit synchronization for certain operations.  
+6. Wait and Notify or notifyAll
+    synchronized (sharedObject) {
+        while (conditionNotMet) {
+            sharedObject.wait(); // Release the lock and wait
+        }
+        // Perform actions when the condition is met
+    }
+
+
+
+
+
+
+                    When to Use Multithreading ?
+1. When tasks are independent and can run in parallel
+    // Thread 1: Read file
+    // Thread 2: Make API call
+    // Thread 3: Show progress bar
+
+2. Heavy computations(split tasks across threads)
+    // Thread 1: Sum from 1 to 5000
+    // Thread 2: Sum from 5001 to 10000
+    // Combine result
+3. I/O-bound operations (network calls, database queries).
+    like: Downloading files,Reading databases, Sending emails.
+    //Each download happens in a separate thread
+ 
+4. Server-side programming
+    Each request gets its own thread — used in:
+    Web servers,REST APIs,Chat apps
+
+
+                When not to use Multithreading?
+    1. simple, short scripts.
+    2. When  don’t have parallelizable work.
+    3. Tasks are highly dependent on each other.
+    4. If code gets harder to debug or maintain.
+
+
+
+                    Key points:
+1. Thread = independent path of execution.    
+2. Multithreading is part of the java.lang package.
+3. Threads share memory → easier communication, higher risk of conflicts.
