@@ -1,0 +1,67 @@
+                             
+                               _____ Executor Service _____
+
+Purpose:
+    ExecutorService is a framework provided by the Java Concurrency API
+    to manage and execute submitted tasks without the need to manually manage thread life cycles.
+
+Thread Pool Management:
+    ExecutorService efficiently reuses a fixed pool of threads to execute tasks,
+    thereby improving performance by reducing the overhead of thread creation, 
+    especially for short-lived asynchronous tasks.
+
+
+                            ThreadPool Executor has three part
+
+    1. Application : The code that submits tasks to the pool for execution.
+    2. Task Queue : Holds submitted tasks until a thread is free to execute them.
+    3.Thread Pool : A group of worker threads that actually run the tasks.  
+Application submits tasks -> Task Queue stores them -> Thread Pool executes them.
+
+
+                                Creating Executor Service
+
+    Step-1 : Define a Class that implements Runnable
+    Step-2 : Override run() method
+    Step-3 : Define a Task(Runnable)
+    Step-4 : create a multi thread executor
+    Step-5 : submit the task to executor
+    Step-6: Try to stop all actively executor
+
+Create Single Thread Pool
+    MyThread task=new MyThread();
+    ExecutorService service = Executors.newSingleThreadExecutor();
+    service.submit(task);
+    service.shutdown();
+Create Multiple Thread Pool
+    MyThread task=new MyThread();
+    ExecutorService service = Executors.newFixedThreadPool(numberOfThread);
+    service.submit(task);
+    service.shutdown();
+
+submit()
+    1. Sends a task (Runnable or Callable) to the ExecutorService. 
+    2. Accepts a Runnable (no return) or Callable (returns value).
+    3. Always returns a Future object.
+  Example:
+    Future<String> f = service.submit(() -> "Hello");
+    System.out.println(f.get()); // prints Hello
+
+shutdown()
+    1. Stops new tasks, finishes the submitted ones, then closes.
+    2. Doesn’t stop tasks immediately.
+    3. Use shutdownNow()  to force stop tasks.
+  Example:
+    service.shutdown(); // wait until tasks finish
+    service.shutdownNow(); // try to cancel running tasks
+
+Key Points
+    1. submit() adds work
+    2. shutdown() closes the shop after finishing the work.
+
+             
+                                Returning Future 
+
+   1. Future represents a result that will be available later.
+   2. It acts as a placeholder until the task completes, and get() retrieves the actual value.   
+   3. When  call submit() on an ExecutorService, it returns a Future object.
