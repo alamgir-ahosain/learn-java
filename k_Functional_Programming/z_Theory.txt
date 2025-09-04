@@ -1,0 +1,183 @@
+
+
+               __________________ Functional Programming Concepts _________________
+
+1. Functional Programming : A way of writing programs using functions as small building blocks.
+2. Functions as First-Class 
+    Functions can be:
+     1. Passed as arguments
+     2. Returned from other functions
+     3. Assigned to variables
+3. Immutable Data
+    1. Data, once created, cannot be modified.
+    2. Instead of changing values, new ones are created.
+4. Pure Functions
+    1. Always return the same output for the same input.
+    2. Have no side effects (don’t modify external state).
+5. Functional Interfaces
+   1.Provide a single abstract method (SAM) as a template for functions.
+   2. Make it easier to use functions across different contexts (e.g., with lambdas).
+
+
+
+
+                    Lambda expressions 
+
+    1. Lambda expressions are quick, nameless functions for small tasks.
+    2. Syntax: Written as (parameters) -> {body}, linking inputs to actions.
+    3. Functional Interfaces: They work with interfaces that have only one method, making code concise.
+    4. Readability: They make code shorter and clearer, especially with collections.
+    5. Useful with Collections: Great for managing lists and sets, like filtering or sorting  .
+
+
+            (parameter_list) -> { body }
+   1. No parameter : () -> System.out.println("Hello Lambda!");
+   2. One parameter : (x) -> System.out.println(x);
+   3. Two parameter : (a, b) -> a + b
+   4. explicit : (int a ,int b)->a+b
+   5. Multiple Statement:
+        (a,b)->{
+            System.out.println(a)
+            System.out.println(b)
+            return (a+b);
+        }
+
+
+                            Stream 
+
+    1. Element Sequence: Streams represent a sequence of elements
+    2.Functional Operations: Operations like map, filter, and reduce.
+    3.No Storage: Streams don't store data; they process it on-the-fly from  sources like collections or arrays.
+    4.Efficiency: Stream operations can be lazy, processing elements only as needed, which is efficient for large data.
+    5.One-Time Use: Streams are consumable; once processed, they cannot be.
+    6.Parallel Capable: They support parallel processing, making operations faster by utilizing multiple threads.
+
+                 
+                    filter() in Java Streams 
+
+    1. Purpose : Selects elements that match a condition (predicate).
+    2. Lazy : Runs only when a terminal operation (e.g., forEach, collect) is called.
+    3. Returns :Produces a new stream with the filtered elements.
+
+        List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5, 6);
+        // Filter even numbers and print them
+        nums.stream()
+            .filter(n -> n % 2 == 0)   // keep only even numbers
+            .forEach(System.out::println); // terminal operation
+
+
+                    reduce() in Java Streams
+
+   1. Purpose : Combines stream elements into a single value using a binary operator.
+   2. Versatile : Useful for sum, min, max, product, etc.
+   3. Optional/Identity : Returns Optional<T> if no identity, or a default value if identity is provided.          
+
+
+        List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);
+        
+        // With identity value (0 → default if list empty)
+            int sum = nums.stream() .reduce(0, (a, b) -> a + b);
+            System.out.println("Sum = " + sum); // Output: 15
+
+        // Without identity → returns Optional
+            Optional<Integer> product = nums.stream()
+                                            .reduce((a, b) -> a * b);
+            product.ifPresent(p -> System.out.println("Product = " + p)); // Output: 120
+
+
+                     Functional Interfaces
+
+    1. Single Abstract Method (SAM) : Only one abstract method, but can have many default or static methods.
+    2. Lambda Compatibility : Provide the target type for lambdas and method references.
+    3. @FunctionalInterface Annotation : Optional, but ensures the interface is truly functional.
+    Examples
+       Predicate, Consumer, BinaryOperator, Runnable, Callable, Comparator, or custom interfaces with one abstract method.
+
+
+
+                             Method References in Java
+
+    1. Syntax & Usage → Use :: (double colon). 
+    Example: System.out::println ;refers to the println method of the System.out object.
+    2. Functional Interfaces → Always used with functional interfaces (e.g., Consumer, Predicate).
+    3. Benefit → Makes code cleaner, concise, and more readable.
+    4. Limitation → Works only when method signature matches the functional interface’s abstract method.
+    
+    Syntax 
+        1. Static Method References :   className::staticMethodName
+        2. Instance Method :    instance::instanceMethodName
+        3. Instance method particuler class : ClassName::methodName
+        4. Constructor References : ClassName::new             
+
+         Lamda Expression                Method Reference  
+        str->str.TolowerCase()           String::toLowerCase
+        str.toLowerCase()                String::toLowerCase
+        (a,b)->a.compareTo(b)            Integer::compareTo / String.compareTo
+        (a,b)->Person.compareByAge(a,b)  Person::compareByAge
+
+
+
+                            Programming Paradigsm
+1. Imperative Paradigsm :Programming by giving the computer a sequence of instructions (step by step).
+    1. Procedural Programming: 
+        * Based on procedures (functions).
+        * Code is divided into reusable blocks.
+        * Example: C, Pascal.
+    2. Structured Programming
+        * Focuses on control structures (loops, if-else, sequence).
+        * Avoids "goto" for clarity and maintainability.
+        * Example: C, Ada.
+    3. Object Oriented Programming
+        * Organizes code into objects (data + methods).
+        * Uses concepts like encapsulation, inheritance, polymorphism.
+        * Example: Java, Python, C++.
+2. Declartive Paradigsm : Programming by describing what to do, not how to do it.
+    1. Functional Programming 
+        * Based on mathematical functions.
+        * Avoids changing state (no variables reassigned).
+        * Uses recursion, higher-order functions.
+        * Example: Haskell, Scala, modern JavaScript (with map, filter).
+    2. Logic Programming    
+        * Based on formal logic (facts, rules, queries).
+        * The program describes knowledge, and the engine derives answers.
+        * Example: Prolog.
+
+
+                Optional Class
+Purpose: To avoid NullPointerException and represent a value that may or may not be present.
+Package: java.util.Optional
+
+Key Methods:
+    1. Creating Optional Objects
+      1. Optional.empty()  : create an empty Optional
+      2. Optional.of()    : create Optional with non-null value
+      3. Optional.ofNullable() : ofNullable(value) → create Optional with nullable value
+
+    2.Checking Value Presence
+      1. isPresent()  :check if value exists
+      2. ifPresent() : run action if value exists
+
+    3.Default Values 
+     1. orElse()  : return value or default if empty
+     2. orElseGet() :Returns the value if present Otherwise, calls a Supplier function to provide a value.
+
+    4.Value Transformation: map()
+    5.Throwing Exception: orElseThrow(), throw exception if empty.
+
+
+                        Intermediate Operations
+
+    1. Lazy: Run only when a terminal operation is called.
+    2. Transform: Transform one  stream into another stream (e.g., map, filter).
+    3. Chainable: Can link multiple operations.
+    4. State Handling: can be state or stateless.
+        Stateless → doesn’t need past data (map, filter).
+        Stateful → needs past data (sorted, distinct).
+
+                        Terminal Operations
+
+    1. Trigger: Start stream processing, close the stream.after this ,stream can't be reused.
+    2. Result: Produce value/result (sum, collect) or side-effect (forEach).
+    3. Not Chainable: Ends the stream pipeline.
+    Examples: 
+         collect, forEach, reduce, sum, max, min, count
